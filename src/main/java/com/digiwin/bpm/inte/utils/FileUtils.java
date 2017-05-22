@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.tools.zip.ZipEntry;
-import org.apache.tools.zip.ZipFile;
-import org.apache.tools.zip.ZipOutputStream;
+//import org.apache.tools.zip.ZipEntry;
+//import org.apache.tools.zip.ZipFile;
+//import org.apache.tools.zip.ZipOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -413,7 +413,7 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
 	 * @param srcDirName 压缩的根目录
 	 * @param fileName 根目录下的待压缩的文件名或文件夹名，其中*或""表示跟目录下的全部文件
 	 * @param descFileName 目标zip文件
-	 */
+	 *//*
 	public static void zipFiles(String srcDirName, String fileName,
 			String descFileName) {
 		// 判断目录是否存在
@@ -451,11 +451,11 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
 
 	}
 
-	/**
+	*//**
 	 * 解压缩ZIP文件，将ZIP文件里的内容解压到descFileName目录下
 	 * @param zipFileName 需要解压的ZIP文件
 	 * @param descFileName 目标文件
-	 */
+	 *//*
 	public static boolean unZipFiles(String zipFileName, String descFileName) {
 		String descFileNames = descFileName;
 		if (!descFileNames.endsWith(File.separator)) {
@@ -506,12 +506,12 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
 		}
 	}
 
-	/**
+	*//**
 	 * 将目录压缩到ZIP输出流
 	 * @param dirPath 目录路径
 	 * @param fileDir 文件信息
 	 * @param zouts 输出流
-	 */
+	 *//*
 	public static void zipDirectoryToZipFile(String dirPath, File fileDir, ZipOutputStream zouts) {
 		if (fileDir.isDirectory()) {
 			File[] files = fileDir.listFiles();
@@ -542,12 +542,12 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
 		}
 	}
 
-	/**
+	*//**
 	 * 将文件压缩到ZIP输出流
 	 * @param dirPath 目录路径
 	 * @param file 文件
 	 * @param zouts 输出流
-	 */
+	 *//*
 	public static void zipFilesToZipFile(String dirPath, File file, ZipOutputStream zouts) {
 		FileInputStream fin = null;
 		ZipEntry entry = null;
@@ -574,7 +574,7 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
 				e.printStackTrace();
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * 获取待压缩文件在ZIP文件中entry的名字，即相对于跟目录的相对路径名
