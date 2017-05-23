@@ -41,6 +41,7 @@ Welcome to bpm integration!
             'swf':'<%=basePath%>static/uploadify/uploadify.swf',
             'uploader':'/testupload2',
             'cancelImg': '<%=basePath%>static/uploadify/uploadify-cancel.png',
+            'formData': {'creator' : ''},
 //            'folder': 'upload',
 //            'queueID': 'custom-queue',
 //            'auto': true,
@@ -52,11 +53,16 @@ Welcome to bpm integration!
 //            'onUploadError': function (file, errorCode, errorMsg, errorString) {
 //                alert(456);
 //            },
+            'onUploadStart' : onUploadStart,
             'onUploadSuccess': onUploadSuccess
         });
     });
 
-     function onUploadSuccess(file, data, response) {
+    function onUploadStart(file) {
+        $("#uploadify").uploadify("settings", "formData", {'creator': 'jasonzh'});
+    }
+
+    function onUploadSuccess(file, data, response) {
          console.log('file:' + JSON.stringify(file) + '\ndata:' + JSON.stringify(data) + '\nresponse:' + response);
     }
 

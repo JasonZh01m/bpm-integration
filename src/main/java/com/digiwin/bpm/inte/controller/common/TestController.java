@@ -1,12 +1,9 @@
 package com.digiwin.bpm.inte.controller.common;
 
-import com.digiwin.bpm.inte.model.Folder;
+import com.digiwin.bpm.inte.model.UploadFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,14 +13,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 
 /**
  * Author: JasonZh
- * Date: 2017/1/9
+ * Date: 2017/05/22
  */
 @Controller
 public class TestController {
@@ -53,14 +48,14 @@ public class TestController {
 
     @RequestMapping(value = "testupload2", method = RequestMethod.POST)
     @ResponseBody
-    public Folder testUpload2(MultipartHttpServletRequest request) {
-        logger.debug("inner testupload...");
-        Folder folder = new Folder();
-        folder.setId(1L);
-        folder.setName("TEST NAME");
-        folder.setCreator("JASONZH");
+    public UploadFile testUpload2(MultipartHttpServletRequest request) {
+        logger.debug("inner testupload... ");
+        
+        UploadFile uploadFile = new UploadFile();
+        // TODO: 2017/5/23
 
         Iterator<String> itr = request.getFileNames();
+        logger.debug("creator:{}", request.getParameter("creator"));
         MultipartFile mpf;
 
         while (itr.hasNext()) {
@@ -71,12 +66,12 @@ public class TestController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            logger.debug("Uploading {}", mpf.getOriginalFilename());
+            logger.debug("Uploading {}", mpf);
         }
 
 //        logger.debug("{}", folder);
 
-        return folder;
+        return uploadFile;
     }
 
 
