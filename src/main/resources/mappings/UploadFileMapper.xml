@@ -150,4 +150,11 @@
       RESERV3 = #{reserv3,jdbcType=VARCHAR}
     where OID = #{oid,jdbcType=CHAR}
   </update>
+
+  <select id="findFilesByParent" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from UPLOADFILE
+    where PARENT = #{parent,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.digiwin.bpm.inte.mapper;
 
 import com.digiwin.bpm.inte.model.UploadFile;
 
+import java.util.List;
+
 public interface UploadFileMapper {
     int deleteByPrimaryKey(String oid);
 
@@ -14,4 +16,6 @@ public interface UploadFileMapper {
     int updateByPrimaryKeySelective(UploadFile record);
 
     int updateByPrimaryKey(UploadFile record);
+
+    List<UploadFile> findFilesByParent(String parent);
 }

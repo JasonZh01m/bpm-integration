@@ -132,4 +132,36 @@ public class UploadFile {
     public void setReserv3(String reserv3) {
         this.reserv3 = reserv3 == null ? null : reserv3.trim();
     }
+
+    @Override
+    public String toString() {
+        return "UploadFile{" +
+                "oid='" + oid + '\'' +
+                ", name='" + name + '\'' +
+                ", creator='" + creator + '\'' +
+                ", createdate=" + createdate +
+                ", contenttype='" + contenttype + '\'' +
+                ", filesize=" + filesize +
+                ", parent='" + parent + '\'' +
+                ", reserv1='" + reserv1 + '\'' +
+                ", reserv2='" + reserv2 + '\'' +
+                ", reserv3='" + reserv3 + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UploadFile that = (UploadFile) o;
+
+        return oid.equals(that.oid);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return oid.hashCode();
+    }
 }

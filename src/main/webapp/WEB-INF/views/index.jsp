@@ -10,7 +10,7 @@
 <%@ include file="/WEB-INF/views/include/taglib.jsp" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <html>
 <head>
@@ -38,32 +38,48 @@ Welcome to bpm integration!
         $("#uploadify").uploadify({
             <%--'uploader': '<%=basePath%>static/uploadify/uploadify.swf',--%>
 //            'script': '/testupload',
-            'swf':'<%=basePath%>static/uploadify/uploadify.swf',
-            'uploader':'/testupload2',
+            'swf': '<%=basePath%>static/uploadify/uploadify.swf',
+            'uploader': '/upload',
             'cancelImg': '<%=basePath%>static/uploadify/uploadify-cancel.png',
-            'formData': {'creator' : ''},
+            'formData':
+            {
+                'creator': '',
+                'parent': '',
+                'reserv1': '',
+                'reserv2': '',
+                'reserv3': ''
+
+            },
 //            'folder': 'upload',
 //            'queueID': 'custom-queue',
 //            'auto': true,
 //            'multi': true,
-            'progressData' : 'percentage', //显示上传进度方式
+            'progressData': 'percentage', //显示上传进度方式
 //            'fileDataName': 'Filedata',
 //            'onCancel': function (file) {
 //            },
 //            'onUploadError': function (file, errorCode, errorMsg, errorString) {
 //                alert(456);
 //            },
-            'onUploadStart' : onUploadStart,
+            'onUploadStart': onUploadStart,
             'onUploadSuccess': onUploadSuccess
         });
     });
 
     function onUploadStart(file) {
-        $("#uploadify").uploadify("settings", "formData", {'creator': 'jasonzh'});
+        $("#uploadify").uploadify("settings", "formData",
+                {
+                    'creator': 'jasonzh',
+                    'parent': 'testparent',
+                    'reserv1': 'testreserv1',
+                    'reserv2': 'testreserv2',
+                    'reserv3': 'testreserv3'
+
+                });
     }
 
     function onUploadSuccess(file, data, response) {
-         console.log('file:' + JSON.stringify(file) + '\ndata:' + JSON.stringify(data) + '\nresponse:' + response);
+        console.log('file:' + JSON.stringify(file) + '\ndata:' + JSON.stringify(data) + '\nresponse:' + response);
     }
 
 </script>
