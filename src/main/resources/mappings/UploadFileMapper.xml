@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digiwin.bpm.inte.mapper.UploadFileMapper">
+  <resultMap id="BaseResultMap" type="com.digiwin.bpm.inte.model.UploadFile">
+    <id column="OID" jdbcType="CHAR" property="oid" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="CREATEDATE" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="CONTENTTYPE" jdbcType="VARCHAR" property="contenttype" />
+    <result column="FILESIZE" jdbcType="DECIMAL" property="filesize" />
+    <result column="PARENT" jdbcType="VARCHAR" property="parent" />
+    <result column="RESERV1" jdbcType="VARCHAR" property="reserv1" />
+    <result column="RESERV2" jdbcType="VARCHAR" property="reserv2" />
+    <result column="RESERV3" jdbcType="VARCHAR" property="reserv3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    OID, NAME, CREATOR, CREATEDATE, CONTENTTYPE, FILESIZE, PARENT, RESERV1, RESERV2, 
+    RESERV3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UPLOADFILE
+    where OID = #{oid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from UPLOADFILE
+    where OID = #{oid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.digiwin.bpm.inte.model.UploadFile">
+    insert into UPLOADFILE (OID, NAME, CREATOR, 
+      CREATEDATE, CONTENTTYPE, FILESIZE, 
+      PARENT, RESERV1, RESERV2, 
+      RESERV3)
+    values (#{oid,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{contenttype,jdbcType=VARCHAR}, #{filesize,jdbcType=DECIMAL}, 
+      #{parent,jdbcType=VARCHAR}, #{reserv1,jdbcType=VARCHAR}, #{reserv2,jdbcType=VARCHAR}, 
+      #{reserv3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.digiwin.bpm.inte.model.UploadFile">
+    insert into UPLOADFILE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        OID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="contenttype != null">
+        CONTENTTYPE,
+      </if>
+      <if test="filesize != null">
+        FILESIZE,
+      </if>
+      <if test="parent != null">
+        PARENT,
+      </if>
+      <if test="reserv1 != null">
+        RESERV1,
+      </if>
+      <if test="reserv2 != null">
+        RESERV2,
+      </if>
+      <if test="reserv3 != null">
+        RESERV3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contenttype != null">
+        #{contenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null">
+        #{filesize,jdbcType=DECIMAL},
+      </if>
+      <if test="parent != null">
+        #{parent,jdbcType=VARCHAR},
+      </if>
+      <if test="reserv1 != null">
+        #{reserv1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserv2 != null">
+        #{reserv2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserv3 != null">
+        #{reserv3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.digiwin.bpm.inte.model.UploadFile">
+    update UPLOADFILE
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contenttype != null">
+        CONTENTTYPE = #{contenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null">
+        FILESIZE = #{filesize,jdbcType=DECIMAL},
+      </if>
+      <if test="parent != null">
+        PARENT = #{parent,jdbcType=VARCHAR},
+      </if>
+      <if test="reserv1 != null">
+        RESERV1 = #{reserv1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserv2 != null">
+        RESERV2 = #{reserv2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserv3 != null">
+        RESERV3 = #{reserv3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OID = #{oid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.digiwin.bpm.inte.model.UploadFile">
+    update UPLOADFILE
+    set NAME = #{name,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      CONTENTTYPE = #{contenttype,jdbcType=VARCHAR},
+      FILESIZE = #{filesize,jdbcType=DECIMAL},
+      PARENT = #{parent,jdbcType=VARCHAR},
+      RESERV1 = #{reserv1,jdbcType=VARCHAR},
+      RESERV2 = #{reserv2,jdbcType=VARCHAR},
+      RESERV3 = #{reserv3,jdbcType=VARCHAR}
+    where OID = #{oid,jdbcType=CHAR}
+  </update>
+</mapper>
