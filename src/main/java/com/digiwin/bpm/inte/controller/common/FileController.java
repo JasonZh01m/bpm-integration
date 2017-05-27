@@ -9,12 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -23,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -44,7 +44,7 @@ public class FileController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> uploadFile(MultipartHttpServletRequest request) {
-        logger.debug("inner upload... ");
+        logger.debug("inner upload6666... ");
 
         Map<String, Object> resMap = new HashMap<String, Object>();
 
@@ -141,14 +141,21 @@ public class FileController {
     @RequestMapping(value = "/delete/{oid}", method = RequestMethod.POST)
     @ResponseBody
     public Message deleteFile(@PathVariable String oid, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        int res = fileService.removeFile(oid);
+        UploadFile uploadFile = fileService.findFile(oid);
         Message message = new Message();
+        if (uploadFile == null) {
+            message.setCode(0);
+            message.setMessage("删除失败！");
+            return message;
+        }
+
+        int res = fileService.removeFile(oid);
         if (res > 0) {
             logger.error("文件删除成功:{}", oid);
 
-            UploadFile uploadFile = fileService.findFile(oid);
             String diskpath = uploadPath + File.separator + uploadFile.getParent().hashCode();
             String filepath = diskpath + File.separator + uploadFile.getName();
+//            logger.debug("filepath:{}", filepath);
             FileUtils.deleteFile(filepath);
 
             message.setCode(1);
@@ -175,8 +182,20 @@ public class FileController {
             throw new RuntimeException("Parent is Empty!!");
         }
 
-        return fileService.findFilesByParent(parent);
+        List<UploadFile> uploadFiles = fileService.findFilesByParent(parent);
+        return uploadFiles;
+    }
 
+    /**
+     * 数据绑定日期格式化
+     *
+     * @param binder
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
 }

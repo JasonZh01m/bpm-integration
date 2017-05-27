@@ -2,6 +2,7 @@ package com.digiwin.bpm.inte.mapper;
 
 import com.digiwin.bpm.inte.model.UploadFile;
 import com.digiwin.bpm.inte.utils.IdGen;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,11 +29,13 @@ public class UploadFileMapperTest {
     @Autowired
     private UploadFileMapper uploadFileMapper;
 
+    @Ignore
     @Test
     public void deleteByPrimaryKey() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void insert() throws Exception {
 
@@ -50,16 +53,19 @@ public class UploadFileMapperTest {
         }
     }
 
+    @Ignore
     @Test
     public void selectByPrimaryKey() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void updateByPrimaryKeySelective() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void updateByPrimaryKey() throws Exception {
 

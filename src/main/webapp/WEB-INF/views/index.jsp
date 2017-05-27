@@ -27,10 +27,8 @@ Welcome to bpm integration!
 
 附件：<input id="uploadify" type="file" name="Filedata"/>
 
-<form id="" action="/testupload2" enctype="multipart/form-data" method="post">
-    <input type="file" value="SELECT FILE"/>
-    <input type="submit" value="SUBMIT"/>
-</form>
+<input id="deleteoid" value="" type="text" />
+<input id="deletebtn" value="Delete" type="button" />
 </body>
 <script>
     $(document).ready(function () {
@@ -39,7 +37,7 @@ Welcome to bpm integration!
             <%--'uploader': '<%=basePath%>static/uploadify/uploadify.swf',--%>
 //            'script': '/testupload',
             'swf': '<%=basePath%>static/uploadify/uploadify.swf',
-            'uploader': '/upload',
+            'uploader': '/bpm-inte/upload',
             'cancelImg': '<%=basePath%>static/uploadify/uploadify-cancel.png',
             'formData':
             {
@@ -78,9 +76,57 @@ Welcome to bpm integration!
                 });
     }
 
+    var res;
+
     function onUploadSuccess(file, data, response) {
+        res = JSON.parse(data);
         console.log('file:' + JSON.stringify(file) + '\ndata:' + JSON.stringify(data) + '\nresponse:' + response);
+        console.log(res.message.code);
     }
+
+    /*$('.deletefile').click(function() {
+        console.log('click link' + this.innerHTML);
+    })*/
+
+//    $(".deletefile").bind("click",function(){
+//        console.log('bind click link' + this.innerHTML);
+//    });
+
+//    $(".deletefile").on("click",function(){
+//        console.log('bind click link' + this.innerHTML);
+//    });
+
+    function deletefile(obj) {
+        var oid = obj.getAttribute("fileoid");
+        if(oid == undefined || oid == '') {
+            alert('文件OID不能为空！');
+            return;
+        }
+
+        $.ajax({
+            url : "/bpm-inte/delete/" + oid,
+            type : "post",
+            dataType : "json",
+            success : function(data) {
+                alert(data.message);
+            }
+
+        });
+
+    }
+
+    $('#deletebtn').click(function() {
+
+        $.ajax({
+            url : "/bpm-inte/delete/" + $('#deleteoid').val(),
+            type : "post",
+            dataType : "json",
+            success : function(data) {
+                alert(data.message);
+            }
+
+        });
+    })
 
 </script>
 </html>
