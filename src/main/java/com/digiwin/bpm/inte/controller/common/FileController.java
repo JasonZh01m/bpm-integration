@@ -1,10 +1,12 @@
 package com.digiwin.bpm.inte.controller.common;
 
 import com.digiwin.bpm.inte.model.UploadFile;
+import com.digiwin.bpm.inte.service.ExcelService;
 import com.digiwin.bpm.inte.service.FileService;
 import com.digiwin.bpm.inte.utils.FileUtils;
 import com.digiwin.bpm.inte.utils.IdGen;
 import dto.Message;
+import org.omg.CORBA.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,9 @@ public class FileController {
 
     @Autowired
     private FileService fileService;
+
+    @Autowired
+    private ExcelService excelService;
 
 
     @Value("${inte.filepath}")
@@ -185,6 +190,34 @@ public class FileController {
         List<UploadFile> uploadFiles = fileService.findFilesByParent(parent);
         return uploadFiles;
     }
+
+    /**
+     * 导出Dsmpd（厂商资质）
+     */
+    @RequestMapping(value="/exportDsmpd", method = RequestMethod.GET)
+    public void exportDsmpd(@RequestParam String txtCsppID, @RequestParam String txtZzzsmc, @RequestParam String txtITSxyqyfrtID,
+                            @RequestParam String ddlSyqy, @RequestParam String zzsyFc, @RequestParam String txtYxqssj, @RequestParam String txtYxzzsj,
+                            @RequestParam String txtZzfjyssj, HttpServletResponse response) {
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("dsmpd003", txtCsppID);
+        map.put("dsmpd002", txtZzzsmc);
+        map.put("dsmpd004", txtITSxyqyfrtID);
+
+        logger.debug("ddlSyqy:{}", ddlSyqy);
+//        map.put("dsmpd013C", ddlSyqy);
+        map.put("dsmpd012", zzsyFc);
+        map.put("dsmpd006", txtYxqssj);
+        map.put("dsmpd007", txtYxzzsj);
+        map.put("dsmpd017", txtZzfjyssj);
+
+        excelService.export(map, response);
+
+        logger.debug("Inner exportDsmpd");
+
+
+    }
+
 
     /**
      * 数据绑定日期格式化

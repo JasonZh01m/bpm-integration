@@ -48,7 +48,15 @@
 
         <!-- !!!! Table Configurations !!!! -->
 
+        <!--
         <table tableName="UPLOADFILE" domainObjectName="UploadFile"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        -->
+
+        <table tableName="dsmpd" domainObjectName="Dsmpd"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
