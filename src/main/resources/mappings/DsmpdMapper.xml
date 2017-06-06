@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digiwin.bpm.inte.mapper.DsmpdMapper">
+    <resultMap id="BaseResultMap" type="com.digiwin.bpm.inte.model.Dsmpd">
+        <id column="dsmpd001" jdbcType="VARCHAR" property="dsmpd001"/>
+        <result column="dsmpd002" jdbcType="VARCHAR" property="dsmpd002"/>
+        <result column="dsmpd003" jdbcType="VARCHAR" property="dsmpd003"/>
+        <result column="dsmpd003C" jdbcType="VARCHAR" property="dsmpd003c"/>
+        <result column="dsmpd004" jdbcType="VARCHAR" property="dsmpd004"/>
+        <result column="dsmpd005" jdbcType="VARCHAR" property="dsmpd005"/>
+        <result column="dsmpd006" jdbcType="VARCHAR" property="dsmpd006"/>
+        <result column="dsmpd007" jdbcType="VARCHAR" property="dsmpd007"/>
+        <result column="dsmpd008" jdbcType="VARCHAR" property="dsmpd008"/>
+        <result column="dsmpd009" jdbcType="VARCHAR" property="dsmpd009"/>
+        <result column="dsmpd010" jdbcType="VARCHAR" property="dsmpd010"/>
+        <result column="dsmpd011" jdbcType="VARCHAR" property="dsmpd011"/>
+        <result column="dsmpd012" jdbcType="VARCHAR" property="dsmpd012"/>
+        <result column="dsmpd012C" jdbcType="VARCHAR" property="dsmpd012c"/>
+        <result column="dsmpd013" jdbcType="VARCHAR" property="dsmpd013"/>
+        <result column="dsmpd013C" jdbcType="VARCHAR" property="dsmpd013c"/>
+        <result column="dsmpd014" jdbcType="VARCHAR" property="dsmpd014"/>
+        <result column="dsmpd015" jdbcType="VARCHAR" property="dsmpd015"/>
+        <result column="dsmpd016" jdbcType="VARCHAR" property="dsmpd016"/>
+        <result column="dsmpd017" jdbcType="VARCHAR" property="dsmpd017"/>
+        <result column="dsmpd018" jdbcType="VARCHAR" property="dsmpd018"/>
+        <result column="dsmpd019" jdbcType="VARCHAR" property="dsmpd019"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    dsmpd001, dsmpd002, dsmpd003, dsmpd003C, dsmpd004, dsmpd005, dsmpd006, dsmpd007, 
+    dsmpd008, dsmpd009, dsmpd010, dsmpd011, dsmpd012, dsmpd012C, dsmpd013, dsmpd013C, 
+    dsmpd014, dsmpd015, dsmpd016, dsmpd017, dsmpd018, dsmpd019
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from dsmpd
+        where dsmpd001 = #{dsmpd001,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dsmpd
+    where dsmpd001 = #{dsmpd001,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.digiwin.bpm.inte.model.Dsmpd">
+    insert into dsmpd (dsmpd001, dsmpd002, dsmpd003, 
+      dsmpd003C, dsmpd004, dsmpd005, 
+      dsmpd006, dsmpd007, dsmpd008, 
+      dsmpd009, dsmpd010, dsmpd011, 
+      dsmpd012, dsmpd012C, dsmpd013, 
+      dsmpd013C, dsmpd014, dsmpd015, 
+      dsmpd016, dsmpd017, dsmpd018, 
+      dsmpd019)
+    values (#{dsmpd001,jdbcType=VARCHAR}, #{dsmpd002,jdbcType=VARCHAR}, #{dsmpd003,jdbcType=VARCHAR}, 
+      #{dsmpd003c,jdbcType=VARCHAR}, #{dsmpd004,jdbcType=VARCHAR}, #{dsmpd005,jdbcType=VARCHAR}, 
+      #{dsmpd006,jdbcType=VARCHAR}, #{dsmpd007,jdbcType=VARCHAR}, #{dsmpd008,jdbcType=VARCHAR}, 
+      #{dsmpd009,jdbcType=VARCHAR}, #{dsmpd010,jdbcType=VARCHAR}, #{dsmpd011,jdbcType=VARCHAR}, 
+      #{dsmpd012,jdbcType=VARCHAR}, #{dsmpd012c,jdbcType=VARCHAR}, #{dsmpd013,jdbcType=VARCHAR}, 
+      #{dsmpd013c,jdbcType=VARCHAR}, #{dsmpd014,jdbcType=VARCHAR}, #{dsmpd015,jdbcType=VARCHAR}, 
+      #{dsmpd016,jdbcType=VARCHAR}, #{dsmpd017,jdbcType=VARCHAR}, #{dsmpd018,jdbcType=VARCHAR}, 
+      #{dsmpd019,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.digiwin.bpm.inte.model.Dsmpd">
+        insert into dsmpd
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dsmpd001 != null">
+                dsmpd001,
+            </if>
+            <if test="dsmpd002 != null">
+                dsmpd002,
+            </if>
+            <if test="dsmpd003 != null">
+                dsmpd003,
+            </if>
+            <if test="dsmpd003c != null">
+                dsmpd003C,
+            </if>
+            <if test="dsmpd004 != null">
+                dsmpd004,
+            </if>
+            <if test="dsmpd005 != null">
+                dsmpd005,
+            </if>
+            <if test="dsmpd006 != null">
+                dsmpd006,
+            </if>
+            <if test="dsmpd007 != null">
+                dsmpd007,
+            </if>
+            <if test="dsmpd008 != null">
+                dsmpd008,
+            </if>
+            <if test="dsmpd009 != null">
+                dsmpd009,
+            </if>
+            <if test="dsmpd010 != null">
+                dsmpd010,
+            </if>
+            <if test="dsmpd011 != null">
+                dsmpd011,
+            </if>
+            <if test="dsmpd012 != null">
+                dsmpd012,
+            </if>
+            <if test="dsmpd012c != null">
+                dsmpd012C,
+            </if>
+            <if test="dsmpd013 != null">
+                dsmpd013,
+            </if>
+            <if test="dsmpd013c != null">
+                dsmpd013C,
+            </if>
+            <if test="dsmpd014 != null">
+                dsmpd014,
+            </if>
+            <if test="dsmpd015 != null">
+                dsmpd015,
+            </if>
+            <if test="dsmpd016 != null">
+                dsmpd016,
+            </if>
+            <if test="dsmpd017 != null">
+                dsmpd017,
+            </if>
+            <if test="dsmpd018 != null">
+                dsmpd018,
+            </if>
+            <if test="dsmpd019 != null">
+                dsmpd019,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dsmpd001 != null">
+                #{dsmpd001,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd002 != null">
+                #{dsmpd002,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd003 != null">
+                #{dsmpd003,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd003c != null">
+                #{dsmpd003c,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd004 != null">
+                #{dsmpd004,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd005 != null">
+                #{dsmpd005,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd006 != null">
+                #{dsmpd006,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd007 != null">
+                #{dsmpd007,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd008 != null">
+                #{dsmpd008,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd009 != null">
+                #{dsmpd009,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd010 != null">
+                #{dsmpd010,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd011 != null">
+                #{dsmpd011,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd012 != null">
+                #{dsmpd012,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd012c != null">
+                #{dsmpd012c,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd013 != null">
+                #{dsmpd013,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd013c != null">
+                #{dsmpd013c,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd014 != null">
+                #{dsmpd014,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd015 != null">
+                #{dsmpd015,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd016 != null">
+                #{dsmpd016,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd017 != null">
+                #{dsmpd017,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd018 != null">
+                #{dsmpd018,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd019 != null">
+                #{dsmpd019,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.digiwin.bpm.inte.model.Dsmpd">
+        update dsmpd
+        <set>
+            <if test="dsmpd002 != null">
+                dsmpd002 = #{dsmpd002,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd003 != null">
+                dsmpd003 = #{dsmpd003,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd003c != null">
+                dsmpd003C = #{dsmpd003c,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd004 != null">
+                dsmpd004 = #{dsmpd004,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd005 != null">
+                dsmpd005 = #{dsmpd005,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd006 != null">
+                dsmpd006 = #{dsmpd006,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd007 != null">
+                dsmpd007 = #{dsmpd007,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd008 != null">
+                dsmpd008 = #{dsmpd008,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd009 != null">
+                dsmpd009 = #{dsmpd009,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd010 != null">
+                dsmpd010 = #{dsmpd010,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd011 != null">
+                dsmpd011 = #{dsmpd011,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd012 != null">
+                dsmpd012 = #{dsmpd012,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd012c != null">
+                dsmpd012C = #{dsmpd012c,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd013 != null">
+                dsmpd013 = #{dsmpd013,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd013c != null">
+                dsmpd013C = #{dsmpd013c,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd014 != null">
+                dsmpd014 = #{dsmpd014,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd015 != null">
+                dsmpd015 = #{dsmpd015,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd016 != null">
+                dsmpd016 = #{dsmpd016,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd017 != null">
+                dsmpd017 = #{dsmpd017,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd018 != null">
+                dsmpd018 = #{dsmpd018,jdbcType=VARCHAR},
+            </if>
+            <if test="dsmpd019 != null">
+                dsmpd019 = #{dsmpd019,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where dsmpd001 = #{dsmpd001,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.digiwin.bpm.inte.model.Dsmpd">
+    update dsmpd
+    set dsmpd002 = #{dsmpd002,jdbcType=VARCHAR},
+      dsmpd003 = #{dsmpd003,jdbcType=VARCHAR},
+      dsmpd003C = #{dsmpd003c,jdbcType=VARCHAR},
+      dsmpd004 = #{dsmpd004,jdbcType=VARCHAR},
+      dsmpd005 = #{dsmpd005,jdbcType=VARCHAR},
+      dsmpd006 = #{dsmpd006,jdbcType=VARCHAR},
+      dsmpd007 = #{dsmpd007,jdbcType=VARCHAR},
+      dsmpd008 = #{dsmpd008,jdbcType=VARCHAR},
+      dsmpd009 = #{dsmpd009,jdbcType=VARCHAR},
+      dsmpd010 = #{dsmpd010,jdbcType=VARCHAR},
+      dsmpd011 = #{dsmpd011,jdbcType=VARCHAR},
+      dsmpd012 = #{dsmpd012,jdbcType=VARCHAR},
+      dsmpd012C = #{dsmpd012c,jdbcType=VARCHAR},
+      dsmpd013 = #{dsmpd013,jdbcType=VARCHAR},
+      dsmpd013C = #{dsmpd013c,jdbcType=VARCHAR},
+      dsmpd014 = #{dsmpd014,jdbcType=VARCHAR},
+      dsmpd015 = #{dsmpd015,jdbcType=VARCHAR},
+      dsmpd016 = #{dsmpd016,jdbcType=VARCHAR},
+      dsmpd017 = #{dsmpd017,jdbcType=VARCHAR},
+      dsmpd018 = #{dsmpd018,jdbcType=VARCHAR},
+      dsmpd019 = #{dsmpd019,jdbcType=VARCHAR}
+    where dsmpd001 = #{dsmpd001,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectAllDsmpd" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from dsmpd
+        <where>
+            <if test="dsmpd003 != null and dsmpd003 != ''">
+                dsmpd003 like '%' + #{dsmpd003} + '%'
+            </if>
+            <if test="dsmpd002 != null and dsmpd002 != ''">
+                AND dsmpd002 like '%' + #{dsmpd002} + '%'
+            </if>
+            <if test="dsmpd004 != null and dsmpd004 != ''">
+                AND dsmpd004 like '%' + #{dsmpd004} + '%'
+            </if>
+            <!--<if test="dsmpd013C != null and dsmpd013C != ''">
+                AND dsmpd013C like '%' + #{dsmpd013C} + '%'
+            </if>-->
+            <if test="dsmpd012 != null and dsmpd012 != ''">
+                AND dsmpd012 like '%' + #{dsmpd012} + '%'
+            </if>
+            <if test="dsmpd006 != null and dsmpd006 != ''">
+                AND dsmpd006 like '%' + #{dsmpd006} + '%'
+            </if>
+            <if test="dsmpd007 != null and dsmpd007 != ''">
+                AND dsmpd007 like '%' + #{dsmpd007} + '%'
+            </if>
+            <if test="dsmpd017 != null and dsmpd017 != ''">
+                AND dsmpd017 like '%' + #{dsmpd017} + '%'
+            </if>
+        </where>
+
+        ORDER BY dsmpd003C, dsmpd004;
+    </select>
+</mapper>
