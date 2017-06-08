@@ -762,7 +762,7 @@
       </plugin>
 
       <!-- 生成javadoc文档包的插件 -->
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.10.2</version>
@@ -777,7 +777,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
 
       <!-- install插件 -->
       <plugin>
