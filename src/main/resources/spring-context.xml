@@ -23,6 +23,20 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 
+	<!--<bean id="rmiService"
+		  class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl"
+				  value="http://localhost:8081/bpm-dms/hessian.service" />
+		<property name="serviceInterface" value="com.digiwin.bpm.inte.service.RMIService" />
+	</bean>-->
+
+	<bean id="rmiService"
+		  class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceUrl"
+				  value="http://localhost:8081/bpm-dms/httpinvoker.service" />
+		<property name="serviceInterface" value="com.digiwin.bpm.inte.service.RMIService" />
+	</bean>
+
 	<!-- 数据源配置, 不使用连接池 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driver}" />
