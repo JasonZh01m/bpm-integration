@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digiwin.bpm.inte.mapper.FdglMapper">
+	<resultMap id="BaseResultMap" type="com.digiwin.bpm.inte.model.Fdgl">
+        <id column="dsmph001" jdbcType="VARCHAR" property="dsmph001"/>
+        <result column="dsmph002" jdbcType="VARCHAR" property="dsmph002"/>
+        <result column="dsmph002C" jdbcType="VARCHAR" property="dsmph002C"/>
+        <result column="dsmph003" jdbcType="VARCHAR" property="dsmph003"/>
+        <result column="dsmph004" jdbcType="VARCHAR" property="dsmph004"/>
+        <result column="dsmph005" jdbcType="VARCHAR" property="dsmph005"/>
+        <result column="dsmph006" jdbcType="VARCHAR" property="dsmph006"/>
+        <result column="dsmph007" jdbcType="VARCHAR" property="dsmph007"/>
+        
+        <result column="dsmpi001" jdbcType="VARCHAR" property="dsmpi001"/>
+        <result column="dsmpi002" jdbcType="VARCHAR" property="dsmpi002"/>
+        <result column="dsmpi003" jdbcType="VARCHAR" property="dsmpi003"/>
+        <result column="dsmpi004" jdbcType="VARCHAR" property="dsmpi004"/>
+        <result column="dsmpi005" jdbcType="VARCHAR" property="dsmpi005"/>
+        <result column="dsmpi006" jdbcType="VARCHAR" property="dsmpi006"/>
+        <result column="dsmpi007" jdbcType="VARCHAR" property="dsmpi007"/>
+        <result column="dsmpi008" jdbcType="VARCHAR" property="dsmpi008"/>
+        <result column="dsmpi009" jdbcType="VARCHAR" property="dsmpi009"/>
+        <result column="dsmpi010" jdbcType="VARCHAR" property="dsmpi010"/>
+        
+        <result column="dsmpi011" jdbcType="VARCHAR" property="dsmpi011"/>
+        <result column="dsmpi012" jdbcType="VARCHAR" property="dsmpi012"/>
+        <result column="dsmpi013" jdbcType="VARCHAR" property="dsmpi013"/>
+        <result column="dsmpi014" jdbcType="VARCHAR" property="dsmpi014"/>
+        <result column="dsmpi015" jdbcType="VARCHAR" property="dsmpi015"/>
+        <result column="dsmpi016" jdbcType="VARCHAR" property="dsmpi016"/>
+        <result column="dsmpi017" jdbcType="VARCHAR" property="dsmpi017"/>
+        <result column="dsmpi018" jdbcType="VARCHAR" property="dsmpi018"/>
+        
+        <result column="dsmpi020" jdbcType="VARCHAR" property="dsmpi020"/>
+        <result column="dsmpi021" jdbcType="VARCHAR" property="dsmpi021"/>
+        <result column="dsmpi022" jdbcType="VARCHAR" property="dsmpi022"/>
+        <result column="dsmpi023" jdbcType="VARCHAR" property="dsmpi023"/>
+        <result column="dsmpi024" jdbcType="VARCHAR" property="dsmpi024"/>
+        <result column="dsmpi025" jdbcType="VARCHAR" property="dsmpi025"/>
+        <result column="dsmpi025C" jdbcType="VARCHAR" property="dsmpi025C"/>
+        
+        <result column="dsmpq004" jdbcType="VARCHAR" property="dsmpq004"/>
+        <result column="dsmpq005" jdbcType="VARCHAR" property="dsmpq005"/>
+        <result column="dsmpq006" jdbcType="VARCHAR" property="dsmpq006"/>
+        
+    </resultMap>
+    <sql id="Base_Column_List">
+    	dsmpi001,dsmpi002,dsmpi003,dsmpi004,dsmpi005,
+        dsmpi006,dsmpi007,dsmpi008,dsmpi009,dsmpi010,
+        dsmpi011,dsmpi012,dsmpi013,dsmpi014,dsmpi015,
+        dsmpi016,dsmpi017,dsmpi018,dsmpi020,
+        dsmpi021,dsmpi022,dsmpi023,dsmpi024,dsmpi025,dsmpi025C 
+  </sql>
+	<select id="selectAllDsmph" parameterType="map" resultMap="BaseResultMap">
+       select dsmph001, dsmph002C,dsmph003,dsmph004,dsmph006,dsmph007
+        
+        <if test="ddlZt ==0">
+             from dsmph
+         </if>
+		<if test="ddlZt ==1">
+             from dsmph_temp
+         </if>
+		where 1=1 
+		 
+            <if test="dsmph002 != null and dsmph002 != ''">
+                AND dsmph002 like N'%' + #{dsmph002} + '%'
+            </if>
+            <if test="dsmph002C != null and dsmph002C != ''">
+                AND dsmph002C like N'%' + #{dsmph002C} + '%'
+            </if>
+            <if test="dsmph004 != null and dsmph004 != ''">
+                AND dsmph004 like N'%' + #{dsmph004} + '%'
+            </if>
+            <!--<if test="dsmpd013C != null and dsmpd013C != ''">
+                AND dsmpd013C like '%' + #{dsmpd013C} + '%'
+            </if>-->
+            <if test="dsmph006 != null and dsmph006 != ''">
+                AND dsmph006 like N'%' + #{dsmph006} + '%'
+            </if>
+            <if test="dsmph007 != null and dsmph007 != ''">
+                AND dsmph007 like N'%' + #{dsmph007} + '%'
+            </if>
+            <if test="dsmph003 != null and dsmph003 != ''">
+                AND dsmph003 like N'%' + #{dsmph003} + '%'
+            </if>        
+
+        ORDER BY dsmph003, dsmph004;
+    </select>
+    
+    <select id="selectFdglByOID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select <include refid="Base_Column_List"/> 
+    	
+       <if test="ddlZt ==0">
+             from dsmpi 
+         </if>
+		<if test="ddlZt ==1">
+             from dsmpi_temp 
+         </if>
+         
+    	where dsmpi026=#{dsmph001} 
+    </select>
+    
+    <select id="selectFdglByQOID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select dsmpq002,dsmpq003,dsmpq006 
+    	
+       <if test="ddlZt ==0">
+             from dsmpq 
+         </if>
+		<if test="ddlZt ==1">
+             from dsmpq_temp 
+         </if>
+         
+    	where dsmpq001=#{dsmpq001} 
+    </select>
+    
+    <select id="selectFdglall" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select  dsmpi001,dsmpi002,dsmpi003,dsmpi004,dsmpi005,
+        dsmpi006,dsmpi007,dsmpi008,dsmpi009,dsmpi010,
+        dsmpi011,dsmpi012,dsmpi013,dsmpi014,dsmpi015,
+        dsmpi016,dsmpi017,dsmpi018,dsmpi020,
+        dsmpi021,dsmpi022,dsmpi023,dsmpi024,dsmpi025,dsmpi025C ,
+		dsmph002C,dsmph003,dsmph004,dsmph006,dsmph007,
+		dsmpq004,dsmpq005,dsmpq006  
+    	
+       <if test="ddlZt ==0">
+             from dsmph left join dsmpi on dsmpi026=dsmph001 left join dsmpq on  dsmpq001=dsmph001  
+         </if>
+		<if test="ddlZt ==1">
+             from dsmph_temp left join dsmpi_temp on dsmpi026=dsmph001 left join dsmpq_temp on  dsmpq001=dsmph001 
+         </if>
+         
+    	where 1=1 
+    	
+    	<if test="dsmph002 != null and dsmph002 != ''">
+                AND dsmph002 =  #{dsmph002} 
+            </if>
+            <if test="dsmph002C != null and dsmph002C != ''">
+                AND dsmph002C like N'%' + #{dsmph002C} + '%'
+            </if>
+            <if test="dsmph004 != null and dsmph004 != ''">
+                AND dsmph004 like N'%' + #{dsmph004} + '%'
+            </if>
+            <!--<if test="dsmpd013C != null and dsmpd013C != ''">
+                AND dsmpd013C like '%' + #{dsmpd013C} + '%'
+            </if>-->
+            <if test="dsmph006 != null and dsmph006 != ''">
+                AND dsmph006 like N'%' + #{dsmph006} + '%'
+            </if>
+            <if test="dsmph007 != null and dsmph007 != ''">
+                AND dsmph007 like N'%' + #{dsmph007} + '%'
+            </if>
+            <if test="dsmph003 == 0">
+            	 AND dsmph003 = N'协议' 
+            </if>
+            <if test="dsmph003 == 1">
+            	 AND dsmph003 = N'资质' 
+            </if> 
+    </select>
+</mapper>

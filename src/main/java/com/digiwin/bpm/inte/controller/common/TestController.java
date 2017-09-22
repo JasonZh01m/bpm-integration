@@ -1,10 +1,8 @@
 package com.digiwin.bpm.inte.controller.common;
 
 import com.digiwin.bpm.inte.model.UploadFile;
-import com.digiwin.bpm.inte.service.RMIService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +28,6 @@ public class TestController {
     @Value("${inte.filepath}")
     private String uploadPath;
 
-    @Autowired
-    private RMIService rmiService;
 
 
     @RequestMapping(value = "/index")
@@ -76,12 +72,6 @@ public class TestController {
 //        logger.debug("{}", folder);
 
         return uploadFile;
-    }
-
-
-    @RequestMapping(value = "rmitest", method = RequestMethod.GET)
-    public void rmitest() {
-        rmiService.helloWorld();
     }
 
 

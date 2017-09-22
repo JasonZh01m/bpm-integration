@@ -1,6 +1,7 @@
 package com.digiwin.bpm.inte.service;
 
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,4 +14,12 @@ public interface ExcelService {
     void export(Map<String, String> queryMap, HttpServletResponse response);
 
     void export2(Map<String, String> queryMap);
+    
+    void selectOIDForXyglzy(Map<String, String> queryMap, HttpServletResponse response);
+    
+    void selectAllForRzjsgl(Map<String, String> queryMap, HttpServletResponse response);
+    
+    void exportfdgl(Map<String, String> queryMap, HttpServletResponse response);
+
+    void exportycgys(Map<String, String> queryMap, HttpServletResponse response);
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digiwin.bpm.inte.mapper.XyglzyMapper">
+    <resultMap id="BaseResultMap" type="dto.Xyglzy">
+        <id column="dsmpa001" jdbcType="VARCHAR" property="dsmpa001"/>
+        <result column="dsmpa002C" jdbcType="VARCHAR" property="dsmpa002C"/>
+        <result column="dsmpa003" jdbcType="VARCHAR" property="dsmpa003"/>
+        <result column="dsmpa004C" jdbcType="VARCHAR" property="dsmpa004"/>
+        <result column="dsmpa005" jdbcType="VARCHAR" property="dsmpa005"/>
+        <result column="dsmpa006" jdbcType="VARCHAR" property="dsmpa006"/>
+        <result column="dsmpa007" jdbcType="VARCHAR" property="dsmpa007"/>
+        <result column="dsmpa011" jdbcType="VARCHAR" property="dsmpa008"/>
+        <result column="dsmpa008C" jdbcType="VARCHAR" property="dsmpa008C"/>
+        <result column="dsmpb006" jdbcType="VARCHAR" property="dsmpb005"/>
+        <result column="dsmpb020C" jdbcType="VARCHAR" property="dsmpb020C"/>
+        <result column="dsmpb007" jdbcType="VARCHAR" property="dsmpb007"/>
+        <result column="dsmpb008" jdbcType="VARCHAR" property="dsmpb008"/>
+        <result column="dsmpb009" jdbcType="VARCHAR" property="dsmpb009"/>
+        <result column="dsmpb009C" jdbcType="VARCHAR" property="dsmpb009C"/>
+        <result column="dsmpb010" jdbcType="VARCHAR" property="dsmpb010"/>
+        <result column="dsmpb011" jdbcType="VARCHAR" property="dsmpb011"/>
+        <result column="dsmpb012" jdbcType="VARCHAR" property="dsmpb012"/>
+        <result column="dsmpb013" jdbcType="VARCHAR" property="dsmpb013"/>
+        <result column="dsmpb014" jdbcType="VARCHAR" property="dsmpb014"/>
+        <result column="dsmpb015C" jdbcType="VARCHAR" property="dsmpb015C"/>
+        <result column="dsmpb016C" jdbcType="VARCHAR" property="dsmpb016C"/>
+        <result column="dsmpb019" jdbcType="VARCHAR" property="dsmpb019"/>
+        <result column="dsmpb022" jdbcType="VARCHAR" property="dsmpb022"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    	dsmpb005, dsmpb020C, dsmpb007, dsmpb008, 
+    	dsmpb009, dsmpb009C, dsmpb010, dsmpb011, dsmpb012, dsmpb013, 
+    	dsmpb014, dsmpb015C, dsmpb016C, dsmpb019, dsmpb022
+  	</sql>
+    
+    <select id="selectOIDForXyglzy" parameterType="map" resultMap="BaseResultMap">
+		select dsmpa002C,dsmpa002,dsmpa003,dsmpa004C,dsmpa004,dsmpa005,dsmpa006,dsmpa007,dsmpa008C,dsmpa011,dsmpa001,dsmpb004,dsmpb005,dsmpb006,dsmpb007,dsmpb008,dsmpb009,dsmpb009C,dsmpb010,dsmpb011,dsmpb012,dsmpb013,dsmpb014,dsmpb015C,dsmpb015,dsmpb016C,dsmpb016,dsmpb017,dsmpb018C,dsmpb018,dsmpb019,dsmpb022
+		<if test="ddlZt == 0">
+		from dsmpa left join dsmpb on dsmpa001=dsmpb001 and dsmpa002=dsmpb003 
+		</if>
+		<if test="ddlZt == 1">
+		from dsmpa_temp  left join dsmpb_temp on dsmpa001=dsmpb001 and dsmpa002=dsmpb003 
+		</if>
+		<if test="ddlZt != 0 and ddlZt != 1">
+		from dsmpa left join dsmpb on dsmpa001=dsmpb001 and dsmpa002=dsmpb003 
+		</if>
+		 where 1=1 
+		
+            <if test="dsmpa002 != null and dsmpa002 != ''">
+                AND dsmpa002 like '%' + #{dsmpa002} + '%'
+            </if>
+            <if test="dsmpa003 != null and dsmpa003 != ''">
+                AND dsmpa003 like '%' + #{dsmpa003} + '%'
+            </if>
+            <if test="dsmpa004 != null and dsmpa004 != ''">
+                AND dsmpa004 like '%' + #{dsmpa004} + '%'
+            </if>
+            <!--<if test="dsmpd013C != null and dsmpd013C != ''">
+                AND dsmpd013C like '%' + #{dsmpd013C} + '%'
+            </if>-->
+            <if test="dsmpa005 != null and dsmpa005 != ''">
+                AND dsmpa005 like '%' + #{dsmpa005} + '%'
+            </if>
+            <if test="dsmpa006 != null and dsmpa006 != ''">
+                AND dsmpa006 like '%' + #{dsmpa006} + '%'
+            </if>
+            <if test="dsmpa007 != null and dsmpa007 != ''">
+                AND dsmpa007 like '%' + #{dsmpa007} + '%'
+            </if>
+            <if test="dsmpa008C != null and dsmpa008C != ''">
+                AND dsmpa008C like '%' + #{dsmpa008C} + '%'
+            </if>
+            <if test="dsmpa008 != null and dsmpa008 != ''">
+                AND dsmpa008 like '%' + #{dsmpa008} + '%'
+            </if>
+
+        ORDER BY dsmpa002C, dsmpa003,dsmpb005,dsmpb006,dsmpb007,dsmpb011,dsmpb009,dsmpb009C;
+    </select>
+</mapper>

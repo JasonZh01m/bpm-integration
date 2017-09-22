@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digiwin.bpm.inte.mapper.RZjsglMapper">
+    <resultMap id="BaseResultMap" type="dto.Rzjsgl">
+        <id column="dsmpf002C" jdbcType="VARCHAR" property="dsmpf002C"/>
+        <result column="dsmpg026" jdbcType="VARCHAR" property="dsmpg026"/>
+        <result column="dsmpf014" jdbcType="VARCHAR" property="dsmpf014"/>
+        <result column="dsmpf004" jdbcType="VARCHAR" property="dsmpf004"/>
+        <result column="dsmpf005" jdbcType="VARCHAR" property="dsmpf005"/>
+        <result column="dsmpf006" jdbcType="VARCHAR" property="dsmpf006"/>
+        <result column="dsmpf007" jdbcType="VARCHAR" property="dsmpf007"/>
+        <result column="dsmpf008" jdbcType="VARCHAR" property="dsmpf008"/>
+        <result column="dsmpf009" jdbcType="VARCHAR" property="dsmpf009"/>
+        <result column="dsmpg001" jdbcType="VARCHAR" property="dsmpg001"/>
+        <result column="dsmpg002" jdbcType="VARCHAR" property="dsmpg002"/>
+        <result column="dsmpg003" jdbcType="VARCHAR" property="dsmpg003"/>
+        <result column="dsmpg005" jdbcType="VARCHAR" property="dsmpg005"/>
+        <result column="dsmpg006" jdbcType="VARCHAR" property="dsmpg006"/>
+        <result column="dsmpg007" jdbcType="VARCHAR" property="dsmpg007"/>
+        <result column="dsmpg008" jdbcType="VARCHAR" property="dsmpg008"/>
+        <result column="dsmpg009" jdbcType="VARCHAR" property="dsmpg009"/>
+        <result column="dsmpg010" jdbcType="VARCHAR" property="dsmpg010"/>
+        <result column="dsmpg011" jdbcType="VARCHAR" property="dsmpg011"/>
+        <result column="dsmpg012" jdbcType="VARCHAR" property="dsmpg012"/>
+        <result column="dsmpg013" jdbcType="VARCHAR" property="dsmpg013"/>
+        <result column="dsmpg014" jdbcType="VARCHAR" property="dsmpg014"/>
+        <result column="dsmpg015" jdbcType="VARCHAR" property="dsmpg015"/>
+        <result column="dsmpf010" jdbcType="VARCHAR" property="dsmpf010"/>
+        <result column="dsmpg016" jdbcType="VARCHAR" property="dsmpg016"/>
+        <result column="CREATOR" jdbcType="VARCHAR" property="creator"/>
+        <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate"/>
+        <result column="dsmpg017" jdbcType="VARCHAR" property="dsmpg017"/>
+        <result column="dsmpg018" jdbcType="VARCHAR" property="dsmpg018"/>
+        <result column="dsmpg019" jdbcType="VARCHAR" property="dsmpg019"/>
+        <result column="dsmpg020" jdbcType="VARCHAR" property="dsmpg020"/>
+        <result column="dsmpg024" jdbcType="VARCHAR" property="dsmpg024"/>
+        <result column="dsmpg025" jdbcType="VARCHAR" property="dsmpg025"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    	dsmpf002C,dsmpg026,dsmpf014,dsmpf004,dsmpf005,dsmpf006,dsmpf007,
+    	dsmpf008,dsmpf009,dsmpg001,dsmpg002,dsmpg003,dsmpg005,dsmpg006,
+    	dsmpg007,dsmpg008,dsmpg009,dsmpg010,dsmpg011,dsmpg012,dsmpg013,
+    	dsmpg014,dsmpg015,dsmpf010,dsmpg016,CREATOR,CREATEDATE,dsmpg017,
+    	dsmpg018,dsmpg019,dsmpg020,dsmpg024,dsmpg025
+  </sql>
+    <select id="selectAllForRzjsgl" parameterType="map" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List"/> 
+		<if test="ddlZt == 1">
+		 from dsmpf left join dsmpg on dsmpg.OID = dsmpf001 left join UPLOADFILE on   RESERV1 = dsmpg016 
+		</if>
+		<if test="ddlZt == 0">
+		 from dsmpf_temp left join dsmpg_temp on dsmpg_temp.OID = dsmpf001 left join UPLOADFILE on   RESERV1 = dsmpg016 
+		</if>
+		<if test="ddlZt == 2">
+		 from dsmpf left join dsmpg on dsmpg.OID = dsmpf001 left join UPLOADFILE on   RESERV1 = dsmpg016 
+		</if>
+		 where 1=1 
+            <if test="dsmpf002 != null and dsmpf002 != ''">
+                AND dsmpf002 like N'%' + #{dsmpf002} + '%'
+            </if>
+            <if test="dsmpf003 == 0">
+            	 AND dsmpf003 = N'协议' 
+            </if>
+            <if test="dsmpf011 != null and dsmpf011 != ''">
+               	 AND dsmpf011 like N'%' + #{dsmpf011} + '%'
+            </if>
+            <if test="dsmpf003 == 1">
+            	 AND dsmpf003 = N'资质' 
+            </if>
+            <if test="dsmpf012 != null and dsmpf012 != ''">
+                 AND dsmpf012 like N'%' + #{dsmpf012} + '%'
+            </if>
+            <if test="dsmpf004 != null and dsmpf004 != ''">
+                AND dsmpf004 like N'%' + #{dsmpf004} + '%'
+            </if>
+            <!--<if test="dsmpd013C != null and dsmpd013C != ''">
+                AND dsmpd013C like '%' + #{dsmpd013C} + '%'
+            </if>-->
+            <if test="dsmpf005 != null and dsmpf005 != ''">
+                AND dsmpf005 like N'%' + #{dsmpf005} + '%'
+            </if>
+            <if test="dsmpf006 != null and dsmpf006 != ''">
+                AND dsmpf006 like N'%' + #{dsmpf006} + '%'
+            </if>
+            <if test="dsmpf007 != null and dsmpf007 != ''">
+                AND dsmpf007 like N'%' + #{dsmpf007} + '%'
+            </if>
+            <if test="dsmpf010 != null and dsmpf010 != ''">
+                AND dsmpf010 like N'%' + #{dsmpf010} + '%'
+            </if>
+            <if test="dsmpg002 != null and dsmpg002 != ''">
+                AND dsmpg002 like N'%' + #{dsmpg002} + '%'
+            </if>
+            <if test="dsmpf008 != null and dsmpf008 != ''">
+                AND dsmpf008 like N'%' + #{dsmpf008} + '%'
+            </if>
+            <if test="dsmpf009 != null and dsmpf009 != ''">
+                AND dsmpf009 like N'%' + #{dsmpf009} + '%'
+            </if>
+            <if test="dsmpf014 != null and dsmpf014 != ''">
+                AND dsmpf014 like N'%' + #{dsmpf014} + '%'
+            </if>
+
+        ORDER BY dsmpf002C,dsmpg026,dsmpf014,dsmpf004,dsmpf005,dsmpf006,dsmpf007,dsmpf008,dsmpf009,dsmpf012,dsmpf013;
+    </select>
+</mapper>

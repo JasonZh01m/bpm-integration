@@ -2,6 +2,8 @@ package com.digiwin.bpm.inte.mapper;
 
 import com.digiwin.bpm.inte.model.Dsmpd;
 
+import dto.Xyglzy;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

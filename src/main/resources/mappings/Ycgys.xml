@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digiwin.bpm.inte.mapper.YcgysMapper">
+	<resultMap id="BaseResultMap" type="com.digiwin.bpm.inte.model.Ycgys">
+		<id column="dsapd001" jdbcType="VARCHAR" property="dsapd001"/>
+        <result column="dsapd002" jdbcType="VARCHAR" property="dsapd002"/>
+        <result column="dsapd003" jdbcType="VARCHAR" property="dsapd003"/>
+        <result column="dsapd004" jdbcType="VARCHAR" property="dsapd004"/>
+        <result column="dsapd005" jdbcType="VARCHAR" property="dsapd005"/>
+        <result column="dsapd006" jdbcType="VARCHAR" property="dsapd006"/>
+        <result column="dsapd007" jdbcType="VARCHAR" property="dsapd007"/>
+        <result column="dsapd008" jdbcType="VARCHAR" property="dsapd008"/>
+	 </resultMap>
+	 <sql id="Base_Column_List">
+    	dsapd001,dsapd002,dsapd003,dsapd004,dsapd005,
+        dsapd006,dsapd007,dsapd008 
+  	</sql>
+  	
+  	<select id="selectYcgysall" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select  <include refid="Base_Column_List"/>   
+    	
+       
+             from dsapd 
+        
+         
+    	 where 1=1
+    	
+    	<if test="dsapd001 != null and dsapd001 != ''">
+               and dsapd001 =  #{dsapd001} 
+            </if>
+            <if test="dsapd002 != null and dsapd002 != ''">
+                AND dsapd002 like '%' + #{dsapd002} + '%'
+            </if>
+            <if test="dsapd003 != null and dsapd003 != ''">
+                AND dsapd003 like '%' + #{dsapd003} + '%'
+            </if>
+            <!--<if test="dsmpd013C != null and dsmpd013C != ''">
+                AND dsmpd013C like '%' + #{dsmpd013C} + '%'
+            </if>-->
+            <if test="dsapd004 != null and dsapd004 != ''">
+                AND dsapd004 like '%' + #{dsapd004} + '%'
+            </if>
+            <if test="dsapd005 != null and dsapd005 != ''">
+                AND dsapd005 like '%' + #{dsapd005} + '%'
+            </if>
+            <if test="txtPOApproveDateFrom != null and txtPOApproveDateFrom != ''">
+                AND  dsapd006 <![CDATA[>=]]> #{txtPOApproveDateFrom}
+            </if> 
+            <if test="txtPOApproveDateTo != null and txtPOApproveDateTo != ''">
+                AND dsapd006 <![CDATA[<=]]> #{txtPOApproveDateTo}
+            </if> 
+    </select>
+</mapper>

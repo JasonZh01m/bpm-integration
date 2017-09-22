@@ -24,12 +24,12 @@
 			</bean>
 			<!-- 配置Fastjson支持 -->
 			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-				<!--<property name="supportedMediaTypes">
+				<property name="supportedMediaTypes">
 					<list>
 						<value>text/html;charset=UTF-8</value>
 						<value>application/json</value>
 					</list>
-				</property>-->
+				</property>
 				<property name="features">
 					<list>
 						<value>WriteMapNullValue</value>

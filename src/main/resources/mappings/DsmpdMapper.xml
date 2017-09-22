@@ -295,31 +295,42 @@
     <select id="selectAllDsmpd" parameterType="map" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from dsmpd
+        <if test="saveType == 0">
+        from dsmpd_temp 
+        </if>
+        <if test="saveType == 1">
+        from dsmpd 
+        </if>
+        <if test="saveType != 0 and saveType != 1">
+        from dsmpd 
+        </if>
         <where>
             <if test="dsmpd003 != null and dsmpd003 != ''">
-                dsmpd003 like '%' + #{dsmpd003} + '%'
+                dsmpd003 like N'%' + #{dsmpd003} + '%'
             </if>
             <if test="dsmpd002 != null and dsmpd002 != ''">
-                AND dsmpd002 like '%' + #{dsmpd002} + '%'
+                AND dsmpd002 like N'%' + #{dsmpd002} + '%'
             </if>
             <if test="dsmpd004 != null and dsmpd004 != ''">
-                AND dsmpd004 like '%' + #{dsmpd004} + '%'
+                AND dsmpd004 like N'%' + #{dsmpd004} + '%'
             </if>
-            <!--<if test="dsmpd013C != null and dsmpd013C != ''">
+            <if test="dsmpd013C != null and dsmpd013C != ''">
                 AND dsmpd013C like '%' + #{dsmpd013C} + '%'
-            </if>-->
+            </if>
             <if test="dsmpd012 != null and dsmpd012 != ''">
-                AND dsmpd012 like '%' + #{dsmpd012} + '%'
+                AND dsmpd012 like N'%' + #{dsmpd012} + '%'
             </if>
             <if test="dsmpd006 != null and dsmpd006 != ''">
-                AND dsmpd006 like '%' + #{dsmpd006} + '%'
+                AND dsmpd006 like N'%' + #{dsmpd006} + '%'
             </if>
             <if test="dsmpd007 != null and dsmpd007 != ''">
-                AND dsmpd007 like '%' + #{dsmpd007} + '%'
+                AND dsmpd007 like N'%' + #{dsmpd007} + '%'
             </if>
             <if test="dsmpd017 != null and dsmpd017 != ''">
-                AND dsmpd017 like '%' + #{dsmpd017} + '%'
+                AND dsmpd017 like N'%' + #{dsmpd017} + '%'
+            </if>
+            <if test="dsmpd013 != null and dsmpd013 != ''">
+                AND dsmpd013 like N'%' + #{dsmpd013} + '%'
             </if>
         </where>
 
